@@ -74,7 +74,7 @@ public abstract class TicTacToeUtilities {
             }
         }
 
-        if(numberOfRounds == 8){
+        if(numberOfRounds == 9){
             gameOver("draw");
         }
 
@@ -147,7 +147,6 @@ public abstract class TicTacToeUtilities {
         roundTimer = Server.RoundTimer;
     }
 
-    //TODO FIX player go out while sending time
     Thread roundCountDown = new Thread(new Runnable() {
         @Override
         public void run() {
@@ -179,7 +178,6 @@ public abstract class TicTacToeUtilities {
                     roundTimer = -1;
                 }
 
-                //TODO
                 if (roundTimer == 0)
                     gameOver("timeOut");
 

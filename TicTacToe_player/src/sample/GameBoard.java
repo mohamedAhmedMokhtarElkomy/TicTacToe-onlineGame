@@ -66,7 +66,7 @@ public class GameBoard implements Layout , EventHandler<ActionEvent> {
         //Write my symbol
         button.setText(String.valueOf(Main.socket.mySymbol));
 
-        toggleTurn();
+        gridPane.setDisable(true);
         System.out.println("Waiting for other player turn...");
     }
 
@@ -78,12 +78,14 @@ public class GameBoard implements Layout , EventHandler<ActionEvent> {
             row += 1;
         }
         gameTable[row][index].setDisable(true);
-//        gameTable[row][index].setText(String.valueOf(Main.myOpponentSymbol));
+        gameTable[row][index].setTextFill(secondaryColor);
+        gameTable[row][index].setText(String.valueOf(Main.socket.myOpponentSymbol));
+        gameTable[row][index].setStyle("");
         System.out.println("Opponent selected: "+ index);
     }
 
-    void toggleTurn(){
-        gridPane.setDisable(!Main.socket.myTurn);
+    void enableGrid(){
+        gridPane.setDisable(false);
     }
 
     @Override

@@ -44,14 +44,13 @@ public class GameHeader implements Layout{
         this.timer.setText(time);
     }
 
-    //TODO
-    void toggleTurn(){
-        if (Main.socket.myTurn == true) {
-            player1Name.setTextFill(Color.GREEN);
-            player2Name.setTextFill(Color.BLACK);
+    void playerColorControl(){
+        if (Main.socket.myTurn) {
+            player1Name.setTextFill(primaryColor);
+            player2Name.setTextFill(secondaryColor);
         }else{
-            player2Name.setTextFill(Color.GREEN);
-            player1Name.setTextFill(Color.BLACK);
+            player2Name.setTextFill(primaryColor);
+            player1Name.setTextFill(secondaryColor);
         }
     }
 

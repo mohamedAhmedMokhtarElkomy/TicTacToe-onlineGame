@@ -24,12 +24,6 @@ public class MySocket {
     char myOpponentSymbol;
     boolean myTurn;
 
-    enum Cell{
-        X,
-        O,
-    }
-
-
     public MySocket(String userName) {
 
         //Get user name from TextField found in home page
@@ -95,11 +89,6 @@ public class MySocket {
             }
         }
     });
-
-    void disconnect(){
-        if (socket != null)
-            close();
-    }
 
     //Close socket and Streams
     void close(){

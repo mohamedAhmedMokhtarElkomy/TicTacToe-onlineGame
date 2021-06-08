@@ -10,9 +10,10 @@ public interface Layout {
     int width = 600;
     int height = 600;
     String font = "-fx-font: 24 arial";
-    Color primaryColor = Color.web("#4169E1");
+    Color primaryColor = Color.web("#00a6ff");
     Color secondaryColor = Color.BLACK;
-    String backgroundColor = "-fx-background-color: #4169E1; -fx-font: 24 arial";
+    String backgroundColor = "-fx-font: 24 arial;-fx-text-fill: black;-fx-border-color: black; -fx-background-color:#00a6ff;";
+    // -fx-border-color: grey; -fx-border-radius: 5;
 
 
     ////Return Scene from current class

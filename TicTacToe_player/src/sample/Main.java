@@ -30,7 +30,8 @@ public class Main extends Application {
 
         //TODO
         primaryStage.setOnCloseRequest(event -> {
-            socket.disconnect();
+            if(socket != null)
+                socket.close();
             System.out.println("Stage is closing");
             // Save file
         });

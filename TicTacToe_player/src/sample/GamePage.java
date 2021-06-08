@@ -38,6 +38,7 @@ public class GamePage implements Layout{
             //Store message coming from server
             String message = "";
             while(gameOn){
+                gameHeader.playerColorControl();
                 try {
                     //get message from server at anytime while game is on
                     message = Main.socket.dataInputStream.readUTF();
@@ -52,10 +53,13 @@ public class GamePage implements Layout{
                 switch (stringTokenizer.nextToken()){
                     case "index":
                         //game received index selected by the opponent
-                        gameBoard.disableButton(Integer.parseInt(stringTokenizer.nextToken()));
+                        Platform.runLater(new Runnable() {
+                            @Override public void run() {
+                                gameBoard.disableButton(Integer.parseInt(stringTokenizer.nextToken()));
+                            }
+                        });
                         Main.socket.myTurn = true;
-                        gameHeader.toggleTurn();
-                        gameBoard.toggleTurn();
+                        gameBoard.enableGrid();
                         break;
                     case "gameOver":
                         //if game is over it receive the winner from server and why game is end

@@ -3,6 +3,7 @@ package sample;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.io.*;
 import java.net.Socket;
@@ -38,9 +40,11 @@ public class HomePage implements Layout{
         searchButton = new Button("Search for player",searchIcon);
         progressIndicator = new ProgressIndicator();
         StackPane stackPane = new StackPane();
+        VBox group = new VBox(nameField, stackPane);
+        group.setSpacing(20);
 
         stackPane.getChildren().addAll(searchButton, progressIndicator);
-        vBox = new VBox(title, nameField, stackPane);
+        vBox = new VBox(title, group);
 
         customizeViews();
     }
@@ -93,8 +97,8 @@ public class HomePage implements Layout{
     public void customizeViews() {
 
         //style title
-        title.setStyle(font);
-        title.setTextFill(primaryColor);
+        title.setStyle("-fx-font: 54 arial");
+        title.setTextFill(Color.rgb(255,255,255));
 
         //style name field
         nameField.setPromptText("Please Enter your name");
@@ -102,7 +106,7 @@ public class HomePage implements Layout{
 
         //style searchButton
         searchButton.setStyle(backgroundColor);
-        searchButton.setTextFill(secondaryColor);
+//        searchButton.setTextFill(secondaryColor);
         searchButton.setOnAction(e-> searchForPlayer());
 
         //style search icon
@@ -114,11 +118,11 @@ public class HomePage implements Layout{
 
         //style vbox
         vBox.setAlignment(Pos.CENTER);
-        vBox.setSpacing(30);
+        vBox.setSpacing(200);
         vBox.setPadding(new Insets(20));
 
         //Background image
-        BackgroundImage myBI= new BackgroundImage(loadImage("ticTacToe-1.jpg"),
+        BackgroundImage myBI= new BackgroundImage(loadImage("ticTacToe-3.jpg"),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         vBox.setBackground(new Background(myBI));
