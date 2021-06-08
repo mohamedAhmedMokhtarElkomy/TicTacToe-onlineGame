@@ -67,6 +67,7 @@ public class Player {
         try{
             dataInputStream.close();
             dataOutputStream.close();
+            socket.close();
         }catch (IOException exception){
             exception.printStackTrace();
         }
