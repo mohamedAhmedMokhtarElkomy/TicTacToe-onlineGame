@@ -20,15 +20,11 @@ import java.util.StringTokenizer;
 
 public class Main extends Application {
 
-    final static int WIDTH = 500;
-    final static int HEIGHT = 500;
-    static MySocket socket;
+    static MySocket socket = null;
     static Stage programStage;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-        //TODO
         primaryStage.setOnCloseRequest(event -> {
             if(socket != null)
                 socket.close();

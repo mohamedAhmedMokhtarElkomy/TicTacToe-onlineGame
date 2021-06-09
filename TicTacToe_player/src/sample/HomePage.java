@@ -6,10 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -76,9 +73,20 @@ public class HomePage implements Layout{
         {
             toggleProgressIndicator();
             Main.socket = new MySocket(nameField.getText());
+            if (Main.socket.connectionFailed == true)
+                toggleProgressIndicator();
+        }else
+        {
+            //Show Alert dialog
+            Platform.runLater(new Runnable() {
+                @Override public void run() {
+                    javafx.scene.control.Alert alert = new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+                    alert.setTitle("Text Field is empty");
+                    alert.setHeaderText("please enter your name");
+                    alert.showAndWait();
+                }
+            });
         }
-
-        //TODO else show error => name field is empty
 
     }
 

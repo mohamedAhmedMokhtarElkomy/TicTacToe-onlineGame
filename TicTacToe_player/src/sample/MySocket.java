@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.application.Platform;
+import javafx.scene.control.Alert;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -23,6 +24,7 @@ public class MySocket {
     char mySymbol;
     char myOpponentSymbol;
     boolean myTurn;
+    boolean connectionFailed;
 
     public MySocket(String userName) {
 
@@ -46,7 +48,9 @@ public class MySocket {
 
         } catch (IOException exception) {
             System.out.println("failed to Connect to server " + exception.getMessage());
-            return;//TODO alert screen , toggleIndicator
+            connectionFailed = true;
+            showError();
+            return;
         }
         System.out.println("Searching for player...");
     }
@@ -57,19 +61,18 @@ public class MySocket {
         public void run() {
             //Receive the other player name
             //and get which player turn
-            try{
+            try {
                 //String received has the shape like => opponentName#myTurnIsFirst
                 String received = dataInputStream.readUTF();
 
                 //cut string at each # to get data needed
                 StringTokenizer stringTokenizer = new StringTokenizer(received, "#");
                 otherPlayerName = stringTokenizer.nextToken();
-                if(stringTokenizer.nextToken().equals("true")) {
+                if (stringTokenizer.nextToken().equals("true")) {
                     myTurn = true;
                     mySymbol = 'X';
                     myOpponentSymbol = 'O';
-                }
-                else{
+                } else {
                     myTurn = false;
                     mySymbol = 'O';
                     myOpponentSymbol = 'X';
@@ -77,27 +80,43 @@ public class MySocket {
 
                 //Change program stage scene from home page => game page
                 Platform.runLater(new Runnable() {
-                    @Override public void run() {
+                    @Override
+                    public void run() {
                         GamePage gamePage = new GamePage(currentPlayerName, otherPlayerName);
                         Main.programStage.setScene(gamePage.getScene());
                     }
                 });
 
-            }catch (IOException exception){
+            } catch (IOException exception) {
                 System.out.println("Failed to get Data from server");
-                return;//TODO alert screen , toggleIndicator
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        showError();
+                    }
+                });
             }
         }
     });
 
     //Close socket and Streams
-    void close(){
+    void close() {
         try {
-            socket.close();
-            dataInputStream.close();
-            dataOutputStream.close();
+            if (socket != null) {
+                socket.close();
+                dataInputStream.close();
+                dataOutputStream.close();
+            }
         } catch (IOException exception) {
             exception.printStackTrace();
         }
+    }
+
+    void showError() {
+
+        javafx.scene.control.Alert alert = new Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+        alert.setTitle("Failed to connect to server");
+        alert.setHeaderText("Please try again");
+        alert.showAndWait();
     }
 }

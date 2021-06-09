@@ -19,8 +19,6 @@ import java.util.concurrent.TimeUnit;
 
 public class GameHeader implements Layout{
 
-
-//    private int count = Main.ROUNDTIME;//Count used for countdown thread
     final private Label player1Name;
     final private Label player2Name;
     private Label timer;//Count down round timer
@@ -92,71 +90,4 @@ public class GameHeader implements Layout{
             player1Name.setTextFill(Color.BLACK);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //    //Run round countDown in thread
-//    Thread countDown = new Thread(new Runnable() {
-//        @Override
-//        public void run() {
-//            while (count >= 0){
-//                try {
-//                    //From internet
-//                    Platform.runLater(new Runnable() {
-//                        @Override public void run() {
-//                            timer.setText(String.valueOf(count));//Update timer label text each 1 second
-//                        }
-//                    });
-//                    TimeUnit.SECONDS.sleep(1);
-//                    count--;
-//
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//            //if (count == 0)
-//                //TODO
-//        }
-//    });
-//
-//    //Reset countDown each round
-//    public static void resetCount() {
-//        count = Main.ROUNDTIME;
-//        timer.setText(String.valueOf(count));
-//    }
-
-//    Thread getCountDown = new Thread(new Runnable() {
-//        String  countDown;
-//        @Override
-//        public void run() {
-//            try {
-//                countDown = Main.dataInputStream.readUTF();
-//            } catch (IOException exception) {
-//                exception.printStackTrace();
-//            }
-//            Platform.runLater(new Runnable() {
-//                    @Override public void run() {
-//                        timer.setText(countDown);
-//                    }
-//                });
-//        }
-//    });
 }

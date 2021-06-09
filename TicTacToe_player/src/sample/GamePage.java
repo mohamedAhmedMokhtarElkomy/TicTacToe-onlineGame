@@ -44,7 +44,6 @@ public class GamePage implements Layout{
                     message = Main.socket.dataInputStream.readUTF();
                 } catch (IOException exception) {
                     exception.printStackTrace();
-                    //TODO game is over
                     gameOn = false;
                 }
 
@@ -81,9 +80,6 @@ public class GamePage implements Layout{
             }
         }
     });
-
-    //TODO
-    void disconnected(){}
 
     void gameOver(String iWin, String wayOfWin){
         gameOn = false;

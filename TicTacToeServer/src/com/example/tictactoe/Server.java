@@ -30,6 +30,7 @@ public class Server {
                     new DataOutputStream(socket.getOutputStream()),
                     "player1",
                     'x');
+            System.out.println("connected");
             //Read name of player joined
             name = player1.getDataInputStream().readUTF();
             player1.setName(name);
