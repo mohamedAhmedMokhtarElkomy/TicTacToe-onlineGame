@@ -78,14 +78,6 @@ public abstract class TicTacToeUtilities {
             gameOver("draw");
         }
 
-        //Print gameTable
-        for (int i = 0; i <= 2; i++) {
-            for (int j = 0; j <= 2; j++){
-                System.out.print(GameTable[i][j]);
-            }
-            System.out.println();
-        }
-
         //Change current player turn and reset round countdown
         togglePlayer();
         resetCount();

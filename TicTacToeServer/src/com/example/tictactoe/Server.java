@@ -5,8 +5,7 @@ import com.example.tictactoe.models.Player;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.net.*;
 
 public class Server {
 
@@ -15,7 +14,10 @@ public class Server {
 
     public static void main(String[] args) throws IOException {
 
-        ServerSocket serverSocket = new ServerSocket(serverPort);
+        InetAddress inetAddress = InetAddress.getByName("localhost");
+        SocketAddress socketAddress = new InetSocketAddress(inetAddress, serverPort);
+        ServerSocket serverSocket = new ServerSocket();
+        serverSocket.bind(socketAddress);
         Socket socket;
         Player player1;
         Player player2;
