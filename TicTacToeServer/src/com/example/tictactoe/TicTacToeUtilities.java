@@ -36,7 +36,6 @@ public abstract class TicTacToeUtilities {
             }
         }
     }
-
     void checkGame(int row, int column, Cell cellContent){
         numberOfRounds++;
         GameTable[row][column] = cellContent;
