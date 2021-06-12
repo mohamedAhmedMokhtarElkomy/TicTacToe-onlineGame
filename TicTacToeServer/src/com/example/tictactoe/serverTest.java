@@ -1,6 +1,7 @@
-package com.example.tictactoe.models;
+package com.example.tictactoe;
 
 import com.example.tictactoe.GameHandler;
+import com.example.tictactoe.models.Player;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
