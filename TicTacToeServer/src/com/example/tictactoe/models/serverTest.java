@@ -1,14 +1,13 @@
-package com.example.tictactoe;
+package com.example.tictactoe.models;
 
-import com.example.tictactoe.models.Player;
+import com.example.tictactoe.GameHandler;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.*;
 
-public class Server {
-
+public class serverTest {
     final static int serverPort = 1234;
     final static int RoundTimer = 20;
 

@@ -12,7 +12,6 @@ import java.util.StringTokenizer;
 public class MySocket {
 
     final static String ip = "66.23.237.135";
-//    final static String ip = "192.168.209.129";
     final static int SERVERPORT = 1234;
 
     Socket socket = null;
