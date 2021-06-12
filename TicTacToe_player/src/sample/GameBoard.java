@@ -30,7 +30,6 @@ public class GameBoard implements Layout , EventHandler<ActionEvent> {
                 gameTable[row][column].setText(" ");
                 gameTable[row][column].setId(String.valueOf((row * 3) + column));
                 gameTable[row][column].setOnAction(this);
-//                gameTable[row][column].setStyle(backgroundColor);
                 gameTable[row][column].setTextFill(secondaryColor);
                 gameTable[row][column].setMaxSize(50,50);
                 gameTable[row][column].setMinSize(50,50);

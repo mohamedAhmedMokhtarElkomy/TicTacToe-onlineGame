@@ -114,7 +114,6 @@ public class HomePage implements Layout{
 
         //style searchButton
         searchButton.setStyle(backgroundColor);
-//        searchButton.setTextFill(secondaryColor);
         searchButton.setOnAction(e-> searchForPlayer());
 
         //style search icon
